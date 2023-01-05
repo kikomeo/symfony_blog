@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ article }}{% endblock %}
+
+{% block body %}
+
+    <h1 class="text-center mt-3">{{ article }}</h1>
+    
+    <div class="col-2 mx-auto rounded pt-3">
+        <img src="{{ vich_uploader_asset(article) }}" class="img-fluid rounded-start" alt="...">
+    </div>
+
+    <section class="mx-5">
+        {% if article.articleEcris is not empty %}
+            <h5>Articles écris</h5>
+            <div class="d-flex flex-wrap">
+                {% for film in article.articleEcris %}
+                    <div class="col-2 mx-1 mb-4">
+                        <img src="{{ vich_uploader_asset(film) }}" class="img-fluid rounded-start" alt="...">
+                        <h6 class="text-center mt-3"> <a href="" class="text-decoration-none text-white">{{ film.titre }}</a></h6>
+                    </div>
+                {% endfor %}    
+            </div>
+        {% endif %}
+
+        {% if artiste.filmsRealises is not empty %}
+            <h5>Films Réalisés</h5>
+            <div class="d-flex flex-wrap">
+                {% for film in artiste.filmsRealises %}
+                    <div class="col-2 mx-1 mb-4">
+                        <img src="{{ vich_uploader_asset(film) }}" class="img-fluid rounded-start" alt="...">
+                        <h6 class="text-center mt-3"> <a href="" class="text-decoration-none text-white">{{ film.titre }}</a></h6>
+                    </div>
+                {% endfor %}    
+            </div>
+        {% endif %}    
+    </section>
+
+{% endblock %}

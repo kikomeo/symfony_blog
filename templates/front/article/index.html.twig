@@ -1,0 +1,20 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Tous les Artistes{% endblock %}
+
+{% block body %}
+
+    <h1 class="text-center mt-3">Articles</h1>
+
+    <div class="d-flex flex-wrap justify-content-evenly">
+        {% for article in articles %}
+			<div class="d-flex flex-column col-2 mx-2">
+                <div class="rounded pt-3">
+                    <img src="{{ vich_uploader_asset(article) }}" class="img-fluid rounded-start" alt="...">
+                </div>
+                <h5 class="text-center"> <a href="{{ path('app_artiste', {id:article.id}) }}" class="text-decoration-none text-white">{{ article }}</a></h5>
+            </div>
+        {% endfor %}
+	</div>
+
+{% endblock %}
